@@ -1,0 +1,22 @@
+.pending {
+  color: gray;
+}
+
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: red;
+}
+
+.box {
+  position: relative;
+}
+
+button {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}

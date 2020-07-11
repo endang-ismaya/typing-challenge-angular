@@ -8,11 +8,18 @@ import { lorem } from 'faker';
 })
 export class AppComponent {
   randomText: string = lorem.sentence();
-  isSuccess: boolean = false;
+  inputValue: string = '';
 
-  onInput(value: string): void {
-    if (value === this.randomText) {
-      this.isSuccess = true;
+  compare(letter: string, enteredLetter: string): string {
+    if (!enteredLetter) {
+      return 'pending';
     }
+
+    return enteredLetter === letter ? 'correct' : 'incorrect';
+  }
+
+  getRandomText() {
+    this.randomText = lorem.sentence();
+    this.inputValue = '';
   }
 }

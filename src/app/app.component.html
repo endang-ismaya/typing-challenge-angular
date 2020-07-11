@@ -1,20 +1,34 @@
 <div class="container">
   <div class="columns is-centered mt-6">
-    <div class="box column is-one-third">
+    <div class="box column is-half" style="min-height: 300px;">
       <h1 class="title has-text-centered">Typing Challenge</h1>
-      <p class="has-text-centered">{{ randomText }}</p>
-      <div class="field mt-3">
+      <button
+        class="button is-success is-small"
+        style="cursor: pointer;"
+        (click)="getRandomText()"
+      >
+        <i class="fas fa-sync"></i>
+      </button>
+      <p class="has-text-centered is-size-4">
+        <span
+          [class]="compare(letter, inputValue[i])"
+          *ngFor="let letter of randomText.split(''); let i = index"
+          >{{ letter }}</span
+        >
+      </p>
+      <div class="field mt-5">
         <div class="control">
           <input
             class="input is-primary"
             type="text"
             placeholder="Primary input"
-            (input)="onInput($event.target.value)"
+            [value]="inputValue"
+            (input)="inputValue = $event.target.value"
           />
         </div>
       </div>
 
-      <div class="box has-text-centered" *ngIf="isSuccess">
+      <div class="box has-text-centered" *ngIf="randomText === inputValue">
         <h1 class="title">Success!</h1>
       </div>
     </div>
