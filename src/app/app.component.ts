@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { lorem } from 'faker';
+import { faker } from '@faker-js/faker';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  randomText: string = lorem.sentence();
-  inputValue: string = '';
+  randomText = faker.lorem.sentence();
+  inputValue = '';
 
   compare(letter: string, enteredLetter: string): string {
     if (!enteredLetter) {
@@ -19,7 +21,11 @@ export class AppComponent {
   }
 
   getRandomText() {
-    this.randomText = lorem.sentence();
+    this.randomText = faker.lorem.sentence();
     this.inputValue = '';
+  }
+
+  onInput(event: Event) {
+    this.inputValue = (event.target as HTMLInputElement).value;
   }
 }
